@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.iscae._election_etudient.data.Etudient">
+        <table name="etudient" schema="election_etudient_db" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="ine">
+                <column name="INE"/>
+            </basic>
+            <basic name="nom">
+                <column name="nom" length="30"/>
+            </basic>
+            <basic name="prenom">
+                <column name="prenom" length="30"/>
+            </basic>
+            <basic name="dateNaissance">
+                <column name="date_naissance" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="email">
+                <column name="email" length="100"/>
+            </basic>
+            <basic name="numeroImmatriculation">
+                <column name="numero_immatriculation" length="15"/>
+            </basic>
+            <basic name="niveau">
+                <column name="niveau" length="30"/>
+            </basic>
+            <basic name="etablisement">
+                <column name="etablisement" length="300"/>
+            </basic>
+            <basic name="estVote">
+                <column name="est_vote" nullable="false" precision="1"/>
+            </basic>
+            <basic name="fkElection">
+                <column name="FK_Election" precision="-1"/>
+            </basic>
+            <many-to-one name="electionByFkElection" optional="true"
+                         target-entity="com.iscae._election_etudient.data.Election">
+                <join-column name="FK_Election" referenced-column-name="id"/>
+            </many-to-one>
+            <one-to-many name="candidatsById" mapped-by="etudientByFkEtudient"
+                         target-entity="com.iscae._election_etudient.data.Candidat"/>
+        </attributes>
+    </entity>
+</entity-mappings>

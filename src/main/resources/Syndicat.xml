@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.iscae._election_etudient.data.Syndicat">
+        <table name="syndicat" schema="election_etudient_db" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="syndicatNom">
+                <column name="syndicat_nom" nullable="false" length="100"/>
+            </basic>
+            <basic name="nombreVote">
+                <column name="nombre_vote" precision="-1"/>
+            </basic>
+            <basic name="fkElection">
+                <column name="FK_Election" precision="-1"/>
+            </basic>
+            <basic name="logo">
+                <column name="logo" nullable="false" length="100"/>
+            </basic>
+            <many-to-one name="electionByFkElection" optional="true"
+                         target-entity="com.iscae._election_etudient.data.Election">
+                <join-column name="FK_Election" referenced-column-name="id"/>
+            </many-to-one>
+            <one-to-many name="candidatsById" mapped-by="syndicatByFkSyndicat"
+                         target-entity="com.iscae._election_etudient.data.Candidat"/>
+        </attributes>
+    </entity>
+</entity-mappings>

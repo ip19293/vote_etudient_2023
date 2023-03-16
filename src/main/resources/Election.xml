@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.iscae._election_etudient.data.Election">
+        <table name="election" schema="election_etudient_db" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="dateDebit">
+                <column name="date_Debit" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="dateFin">
+                <column name="date_Fin" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="sujet">
+                <column name="sujet" nullable="false" length="50"/>
+            </basic>
+            <basic name="nombreInscrits">
+                <column name="nombre_inscrits" precision="-1"/>
+            </basic>
+            <one-to-many name="etudientsById" mapped-by="electionByFkElection"
+                         target-entity="com.iscae._election_etudient.data.Etudient"/>
+            <one-to-many name="syndicatsById" mapped-by="electionByFkElection"
+                         target-entity="com.iscae._election_etudient.data.Syndicat"/>
+        </attributes>
+    </entity>
+</entity-mappings>
