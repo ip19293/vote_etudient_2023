@@ -3,6 +3,7 @@ package com.iscae._election_etudient.data;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.util.Collection;
 
@@ -14,7 +15,7 @@ public class Etudient {
     private int id;
     @Basic
     @Column(name = "INE", nullable = false, length = 12,unique = true)
-    private String ine;
+    private BigInteger ine;
     @Basic
     @Column(name = "nom", nullable = false, length = 30)
     private String nom;
@@ -22,7 +23,7 @@ public class Etudient {
     @Column(name = "prenom", nullable = false, length = 30)
     private String prenom;
     @Basic
-    @Column(name = "date_naissance", nullable = true)
+    @Column(name = "date_naissance", nullable = false)
     private Date dateNaissance;
     @Basic
     @Column(name = "email", nullable = false, length = 100,unique = true)
@@ -38,7 +39,7 @@ public class Etudient {
     private String etablisement;
     @Basic
     @Column(name = "est_vote", nullable = false)
-    private Byte estVote=0;
+    private int estVote=0;
     @Basic
     @Column(name = "FK_Election", nullable = false)
     private int fkElection;
@@ -57,11 +58,11 @@ public class Etudient {
         this.id = id;
     }
 
-    public String getIne() {
+    public BigInteger getIne() {
         return ine;
     }
 
-    public void setIne(String ine) {
+    public void setIne(BigInteger ine) {
         this.ine = ine;
     }
 
@@ -121,11 +122,11 @@ public class Etudient {
         this.etablisement = etablisement;
     }
 
-    public Byte getEstVote() {
+    public int getEstVote() {
         return estVote;
     }
 
-    public void setEstVote(Byte estVote) {
+    public void setEstVote(int estVote) {
         this.estVote = estVote;
     }
 

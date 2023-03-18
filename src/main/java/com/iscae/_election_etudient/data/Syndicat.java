@@ -12,16 +12,16 @@ public class Syndicat {
     @Column(name = "id", nullable = false)
     private int id;
     @Basic
-    @Column(name = "syndicat_nom", nullable = true, length = 100)
+    @Column(name = "syndicat_nom", nullable = false, length = 100)
     private String syndicatNom;
     @Basic
     @Column(name = "nombre_vote", nullable = false)
-    private int nombreVote;
+    private int nombreVote=0;
     @Basic
     @Column(name = "FK_Election", nullable = false)
     private int fkElection;
     @Basic
-    @Column(name = "logo", nullable = true, length = 100)
+    @Column(name = "logo", nullable = false, length = 100)
     private String logo;
     @OneToMany(mappedBy = "syndicatByFkSyndicat")
     private Collection<Candidat> candidatsById;

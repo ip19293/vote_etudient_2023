@@ -4,6 +4,7 @@ package com.iscae._election_etudient.dto;
 
 import com.iscae._election_etudient.data.Etudient;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public interface EtudientDto {
@@ -13,5 +14,5 @@ public interface EtudientDto {
     Etudient getEtudientByEmail(String email);
     List<Etudient> getEtudients();
 
-    Etudient getEtudientFromEmailAndIne(String email,String INE);
+    Etudient getEtudientFromEmailAndIne(String email, BigInteger INE);
 }

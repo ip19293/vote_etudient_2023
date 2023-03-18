@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Service
@@ -40,7 +41,7 @@ public class EtudientServices implements EtudientDto {
 
     @Override
     public Etudient getEtudientByEmail(String email) {
-        Etudient e=etudientRepository.findEtudientByEmail(email);
+        Etudient e=etudientRepository.findByEmail(email);
         if(e==null){
             throw new RuntimeException("etudient n`existe pas");
         }
@@ -53,7 +54,7 @@ public class EtudientServices implements EtudientDto {
     }
 
     @Override
-    public Etudient getEtudientFromEmailAndIne(String email, String INE) {
+    public Etudient getEtudientFromEmailAndIne(String email, BigInteger INE) {
         Etudient eEmail=etudientRepository.findEtudientByEmail(email);
         Etudient eINE=etudientRepository.findEtudientByIne(INE);
         //|| eEmail.getIne()==INE
@@ -64,5 +65,14 @@ public class EtudientServices implements EtudientDto {
             return eEmail;
         }
 
+    }
+
+    public Etudient getEtudientByIne(BigInteger ine) {
+        Etudient eIne=etudientRepository.findEtudientByIne(ine);
+        if(eIne==null){
+            throw new RuntimeException("INE introvable");
+        }else {
+            return eIne;
+        }
     }
 }

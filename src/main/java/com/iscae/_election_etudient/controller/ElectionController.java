@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/election/")
 public class ElectionController {
     final ElectionServices electionServices;
-///----vote/vefification
+
     public ElectionController(ElectionServices electionServices) {
         this.electionServices = electionServices;
     }

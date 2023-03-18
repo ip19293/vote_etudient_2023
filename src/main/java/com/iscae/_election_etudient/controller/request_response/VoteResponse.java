@@ -5,13 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigInteger;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class verificationRequest {
+public class VoteResponse {
+    String nom;
+    String prenom;
     String email;
-    BigInteger INE;
+    String syndicatNom;
+    String logo;
+     int NBRV;
 }

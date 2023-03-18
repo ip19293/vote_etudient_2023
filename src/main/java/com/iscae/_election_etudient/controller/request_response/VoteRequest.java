@@ -11,7 +11,10 @@ import java.math.BigInteger;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class verificationRequest {
+public class VoteRequest {
     String email;
+    String syndicatNom;
     BigInteger INE;
+    String code;
+
 }
